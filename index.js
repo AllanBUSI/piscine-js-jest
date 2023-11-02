@@ -9,7 +9,7 @@ const estPairOuImpair = require('./s1/exercice6')
 const celsiusEnFahrenheit = require('./s1/exercice7')
 const aireCercle = require('./s1/exercice8')
 const estPalindrome = require('./s1/exercice9')
-const multiplication = require('./s1/exercice10')
+const pgcd = require('./s1/exercice10')
 
 const dateIlYADixAns = require('./s2/exercice1')
 const formaterDate = require('./s2/exercice2')
@@ -93,7 +93,7 @@ app.post('/s1/exercice9', (req, res) => {
 app.post('/s1/exercice10', (req, res) => {
     const n1 = req.body.n1
     const n2 = req.body.n2
-    let a = factorielle(n1, n2)
+    let a = pgcd(n1, n2)
     return res.json([{ reponse: a }]);
 });
 
