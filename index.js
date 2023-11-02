@@ -24,6 +24,8 @@ const calculerAge = require('./s2/exercice10')
 
 const PORT = 3000;
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
     return res.json([{ id: 1, name: 'John Doe' }]);
 });
@@ -33,8 +35,32 @@ app.post('/:param', (req, res) => {
 });
 
 app.post('/s1/exercice1', (req, res) => {
+
+    if(req.body?.n1 == undefined || req.body?.n2 == undefined) {
+        return res.status(409).json([{
+            error: true,
+            response: "Le nombre introuvable"
+        }]);
+    }
+
     const n1 = req.body.n1
     const n2 = req.body.n2
+    
+    if (!n1) {
+        return res.status(409).json([{
+            error: true,
+            response: "Le nombre est pas valide"
+        }]);
+    }
+
+    if (!n2) {
+        return res.status(409).json([{
+            error: true,
+            response: "Le nombre est pas valide"
+        }]);
+    }
+
+
     let a = addition(n1, n2)
     return res.json([{ reponse: a }]);
 });
@@ -142,5 +168,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app
-
-

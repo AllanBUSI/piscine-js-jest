@@ -26,3 +26,21 @@ describe('POST /:param', () => {
             });
     });
 });
+
+describe('POST /s1/exercice1', () => {
+
+    test('Exercice 1 S1', (done) => {
+        request(app)
+            .post('/s1/exercice1')
+            .send({
+                n1: 2,
+                n2: 2
+            })
+            .expect(200)
+            .end((err, res) => {
+                if (err) return done(err);
+                expect(res.body).toEqual([{ reponse: 4 }]);
+                done();
+            });
+    });
+});
